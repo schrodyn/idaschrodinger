@@ -8,7 +8,23 @@
 //
 //
 
-//#include "scripts/idc/ColourIda.idc"
+
+//
+//      This file is automatically executed when IDA is started.
+//      You can define your own IDC functions and assign hotkeys to them.
+//
+//      You may add your frequently used functions here and they will
+//      be always available.
+//
+//
+//
+
+#include "scripts/idc/ColourIda.idc"
+
+static hello_world(void)
+{
+    msg("Hello world!\n");
+}
 
 static user_main(void)
 {
@@ -18,10 +34,6 @@ static user_main(void)
     Message("schrodinger IDC user_main()\n");
     Message("+=========================+\n");
 
-    auto compile_err = compile_idc_file("/Users/lmulligan/.idapro/scripts/idc/ColourIda.idc");
-    if (compile_err != 0) {
-        Message("E Could not compile file:\n");
-        Message("  " + compile_err + "\n");
-    }
-    //add_idc_hotkey("Ctrl-Shift-C", ColourIda());
+    add_idc_hotkey("Ctrl-Shift-H", "hello_world");
+    add_idc_hotkey("Alt-Shift-C", "ColourIda");
 }
